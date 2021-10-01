@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  zk:
+    container_name: zk
+    image: zookeeper:3.7.0
+    restart: always
+    hostname: zk
+    ports:
+      - 12181:2181
+#      - 11001:8080
+    environment:
+      ZOO_STANDALONE_ENABLED: 'true'
+      ZOO_ADMINSERVER_ENABLED: 'false'
+    volumes:
+      - F:\workspace\docker\1\jiuzhou\zk\data:/data
+      - F:\workspace\docker\1\jiuzhou\zk\datalog:/datalog
+      - F:\workspace\docker\1\jiuzhou\zk\logs:/logs
