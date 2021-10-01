@@ -2,6 +2,9 @@
 
 ## docker
 
+> docker network create -d bridge --subnet=172.18.0.0/16 --gateway 172.18.0.1 inner-network<br/>
+> docker-compose -f docker-compose.yml up
+
 ## zookeeper
 
 > start
