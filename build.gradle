@@ -1,0 +1,21 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+allprojects {
+    group = 'com.yuebaix'
+    version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+    apply from: "${rootDir}/denpendencies.gradle"
+
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
