@@ -5,6 +5,8 @@
 > docker network create -d bridge --subnet=172.18.0.0/16 --gateway 172.18.0.1 inner-network<br/>
 > docker-compose -f docker-compose.yml up
 
+> 先初始化mysql数据库，再集群启动
+
 ## zookeeper
 
 > start
@@ -28,6 +30,13 @@ apollo portal http://localhost:11023/
 [apollo wiki](https://github.com/apolloconfig/apollo/wiki)
 
 [apollo docs](https://www.apolloconfig.com/#/zh/README)
+
+## xxl
+
+```text
+xxl dashboard http://localhost:11031/xxl-job-admin/
+admin/123456
+```
 
 ## uaa
 
