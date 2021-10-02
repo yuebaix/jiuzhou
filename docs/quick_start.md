@@ -9,6 +9,12 @@
 
 > start
 
+```text
+apollo config http://localhost:11021/
+apollo admin http://localhost:11022/
+apollo portal http://localhost:11023/
+```
+
 [zookeeper official site](https://zookeeper.apache.org/)
 
 [zookeeper github](https://github.com/apache/zookeeper)
