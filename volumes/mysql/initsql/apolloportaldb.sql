@@ -329,52 +329,15 @@ VALUES
     ('api.readTimeout', '10000', 'http接口read timeout'),
     ('consumer.token.salt', 'someSalt', 'consumer token salt'),
     ('admin.createPrivateNamespace.switch', 'true', '是否允许项目管理员创建私有namespace'),
-    ('configView.memberOnly.envs', 'dev', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔'),
+    ('configView.memberOnly.envs', 'pro', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔'),
     ('apollo.portal.meta.servers', '{}', '各环境Meta Service列表');
+
 
 INSERT INTO `Users` (`Username`, `Password`, `UserDisplayName`, `Email`, `Enabled`)
 VALUES
-    ('apollo', '$2a$10$7r20uS.BQ9uBpf3Baj3uQOZvMVvB1RN3PYoKE94gtz2.WAOuiiwXS', 'apollo', 'apollo@acme.com', 1);
+	('apollo', '$2a$10$7r20uS.BQ9uBpf3Baj3uQOZvMVvB1RN3PYoKE94gtz2.WAOuiiwXS', 'apollo', 'apollo@acme.com', 1);
 
 INSERT INTO `Authorities` (`Username`, `Authority`) VALUES ('apollo', 'ROLE_user');
-
-# Sample Data
-# ------------------------------------------------------------
-INSERT INTO `App` (`AppId`, `Name`, `OrgId`, `OrgName`, `OwnerName`, `OwnerEmail`)
-VALUES
-	('SampleApp', 'Sample App', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com');
-
-INSERT INTO `AppNamespace` (`Name`, `AppId`, `Format`, `IsPublic`, `Comment`)
-VALUES
-	('application', 'SampleApp', 'properties', 0, 'default app namespace');
-
-INSERT INTO `Permission` (`Id`, `PermissionType`, `TargetId`)
-VALUES
-	(1, 'CreateCluster', 'SampleApp'),
-	(2, 'CreateNamespace', 'SampleApp'),
-	(3, 'AssignRole', 'SampleApp'),
-	(4, 'ModifyNamespace', 'SampleApp+application'),
-	(5, 'ReleaseNamespace', 'SampleApp+application');
-
-INSERT INTO `Role` (`Id`, `RoleName`)
-VALUES
-	(1, 'Master+SampleApp'),
-	(2, 'ModifyNamespace+SampleApp+application'),
-	(3, 'ReleaseNamespace+SampleApp+application');
-
-INSERT INTO `RolePermission` (`RoleId`, `PermissionId`)
-VALUES
-	(1, 1),
-	(1, 2),
-	(1, 3),
-	(2, 4),
-	(3, 5);
-
-INSERT INTO `UserRole` (`UserId`, `RoleId`)
-VALUES
-	('apollo', 1),
-	('apollo', 2),
-	('apollo', 3);
 
 -- spring session (https://github.com/spring-projects/spring-session/blob/faee8f1bdb8822a5653a81eba838dddf224d92d6/spring-session-jdbc/src/main/resources/org/springframework/session/jdbc/schema-mysql.sql)
 CREATE TABLE SPRING_SESSION (
@@ -399,6 +362,44 @@ CREATE TABLE SPRING_SESSION_ATTRIBUTES (
 	CONSTRAINT SPRING_SESSION_ATTRIBUTES_PK PRIMARY KEY (SESSION_PRIMARY_ID, ATTRIBUTE_NAME),
 	CONSTRAINT SPRING_SESSION_ATTRIBUTES_FK FOREIGN KEY (SESSION_PRIMARY_ID) REFERENCES SPRING_SESSION(PRIMARY_ID) ON DELETE CASCADE
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
+
+# Sample Data
+# ------------------------------------------------------------
+INSERT INTO `App` (`AppId`, `Name`, `OrgId`, `OrgName`, `OwnerName`, `OwnerEmail`)
+VALUES
+  ('SampleApp', 'Sample App', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com');
+
+INSERT INTO `AppNamespace` (`Name`, `AppId`, `Format`, `IsPublic`, `Comment`)
+VALUES
+  ('application', 'SampleApp', 'properties', 0, 'default app namespace');
+
+INSERT INTO `Permission` (`Id`, `PermissionType`, `TargetId`)
+VALUES
+  (1, 'CreateCluster', 'SampleApp'),
+  (2, 'CreateNamespace', 'SampleApp'),
+  (3, 'AssignRole', 'SampleApp'),
+  (4, 'ModifyNamespace', 'SampleApp+application'),
+  (5, 'ReleaseNamespace', 'SampleApp+application');
+
+INSERT INTO `Role` (`Id`, `RoleName`)
+VALUES
+  (1, 'Master+SampleApp'),
+  (2, 'ModifyNamespace+SampleApp+application'),
+  (3, 'ReleaseNamespace+SampleApp+application');
+
+INSERT INTO `RolePermission` (`RoleId`, `PermissionId`)
+VALUES
+  (1, 1),
+  (1, 2),
+  (1, 3),
+  (2, 4),
+  (3, 5);
+
+INSERT INTO `UserRole` (`UserId`, `RoleId`)
+VALUES
+  ('apollo', 1),
+  ('apollo', 2),
+  ('apollo', 3);
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

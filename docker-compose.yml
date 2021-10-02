@@ -49,7 +49,7 @@ services:
       ZOO_ADMINSERVER_ENABLED: 'false'
 
   apollo-quick-start:
-    image: nobodyiam/apollo-quick-start
+    image: yuebaix/apollo-quick-start
     restart: always
     container_name: apollo-quick-start
     dns:
@@ -66,7 +66,7 @@ services:
       - "11022:8090"
       - "11023:8070"
     environment:
-      JAVA_OPTS: '-server -Xms50m -Xmx500m -Xmn150m -Xss128k -XX:MetaspaceSize=50m -XX:MaxMetaspaceSize=50m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC'
+      JAVA_OPTS: '-Xms100m -Xmx1000m -Xmn100m -Xss256k -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=250m'
     links:
       - mysql:apollo-db
 
