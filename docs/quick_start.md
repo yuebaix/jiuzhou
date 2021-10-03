@@ -56,10 +56,22 @@ admin/123456
 
 ## uaa
 
+[http://localhost:12101/swagger-ui/](http://localhost:12101/swagger-ui/)
+
 ## gate
 
-## biz
+[http://localhost:12001/swagger-ui/](http://localhost:12001/swagger-ui/)
+
+[http://localhost:12001/doc.html](http://localhost:12001/doc.html)
 
 ## bizagg
 
+[http://localhost:12201/swagger-ui/](http://localhost:12201/swagger-ui/)
+
+## biz
+
+[http://localhost:12202/swagger-ui/](http://localhost:12202/swagger-ui/)
+
 ## bizclient
+
+[http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)

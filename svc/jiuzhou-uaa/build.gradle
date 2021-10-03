@@ -12,4 +12,8 @@ dependencies {
     implementation ('org.apache.zookeeper:zookeeper') {
         exclude group: 'org.slf4j', module: 'slf4j-log4j12'
     }
+
+    implementation 'io.swagger:swagger-annotations'
+    implementation 'io.swagger:swagger-models'
+    implementation 'io.springfox:springfox-boot-starter'
 }
