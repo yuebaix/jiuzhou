@@ -9,7 +9,14 @@
 
 ## zookeeper
 
-> start
+```shell
+zkcli.sh -server ip:port
+ls /
+ls /jiuzhou
+ls /jiuzhou/app-biz
+get /jiuzhou/app-biz/15184591-300c-47c2-8429-4b1d1c6829e6
+quit
+```
 
 [zookeeper official site](https://zookeeper.apache.org/)
 

@@ -38,6 +38,8 @@ ext {
     panguWebVersion = panguVersion
     panguSpringBootStarterVersion = panguVersion
     panguReadySpringBootStarterVersion = panguVersion
+
+    zookeeperVersion = '3.7.0'
 }
 
 dependencyManagement {
@@ -78,5 +80,7 @@ dependencyManagement {
         dependency "com.yuebaix:pangu-web:${panguWebVersion}"
         dependency "com.yuebaix:pangu-spring-boot-starter:${panguSpringBootStarterVersion}"
         dependency "com.yuebaix:pangu-ready-spring-boot-starter:${panguReadySpringBootStarterVersion}"
+
+        dependency "org.apache.zookeeper:zookeeper:${zookeeperVersion}"
     }
 }

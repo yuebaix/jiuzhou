@@ -6,4 +6,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+    implementation('org.springframework.cloud:spring-cloud-starter-zookeeper-discovery') {
+        exclude group: 'org.apache.zookeeper', module: 'zookeeper'
+    }
+    implementation ('org.apache.zookeeper:zookeeper') {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
 }
