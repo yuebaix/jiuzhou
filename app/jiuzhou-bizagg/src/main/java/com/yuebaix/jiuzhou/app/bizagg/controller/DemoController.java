@@ -19,9 +19,9 @@ public class DemoController {
     @Value("${spring.application.name}")
     private String appName;
     @Autowired
-    private BizFeignClient bizFeignClient;
-    @Autowired
     private UaaFeignClient uaaFeignClient;
+    @Autowired
+    private BizFeignClient bizFeignClient;
 
     @ApiOperation("服务名称")
     @GetMapping("/appName")
@@ -29,15 +29,15 @@ public class DemoController {
         return appName;
     }
 
-    @ApiOperation("调用app-biz")
-    @GetMapping("/callAppBiz")
-    public String callAppBiz() {
-        return bizFeignClient.appName();
-    }
-
     @ApiOperation("调用svc-uaa")
     @GetMapping("/callSvcUaa")
     public String callSvcUaa() {
         return uaaFeignClient.appName();
+    }
+
+    @ApiOperation("调用app-biz")
+    @GetMapping("/callAppBiz")
+    public String callAppBiz() {
+        return bizFeignClient.appName();
     }
 }

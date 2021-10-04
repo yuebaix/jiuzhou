@@ -17,4 +17,7 @@ dependencies {
     implementation 'io.swagger:swagger-annotations'
     implementation 'io.swagger:swagger-models'
     implementation 'io.springfox:springfox-boot-starter'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation project(':app:jiuzhou-bizfacade')
 }
