@@ -16,4 +16,6 @@ dependencies {
     implementation 'io.swagger:swagger-annotations'
     implementation 'io.swagger:swagger-models'
     implementation 'io.springfox:springfox-boot-starter'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
