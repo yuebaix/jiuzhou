@@ -6,9 +6,12 @@ spring:
           uri: lb://app-bizagg
           predicates:
             - Path=/app-bizagg/**
+          filters:
+            - AddRequestHeader=Authorization, Basic eXVlYmFpeDp5dWViYWl4
         - id: route-app-biz
           uri: lb://app-biz
           predicates:
             - Path=/app-biz/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Authorization, Basic eXVlYmFpeDp5dWViYWl4
