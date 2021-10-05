@@ -2,8 +2,6 @@ package com.yuebaix.jiuzhou.app.bizfacade;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.util.UriComponents;
@@ -19,7 +17,6 @@ import java.util.List;
 public class WebMvcXForwardedPrefixOpenApiTransformationFilter implements WebMvcOpenApiTransformationFilter {
     private static final String X_FORWARDED_PREFIX = "X-Forwarded-Prefix";
     private static final String COMMA = ",";
-    private static final char SLASH = '/';
 
     @Override
     public OpenAPI transform(OpenApiTransformationContext<HttpServletRequest> context) {
@@ -29,18 +26,13 @@ public class WebMvcXForwardedPrefixOpenApiTransformationFilter implements WebMvc
             if (!StringUtils.isEmpty(xForwardedPrefix)) {
                 String[] prefixArr = xForwardedPrefix.split(COMMA);
                 if (prefixArr.length > 0) {
-                    String prefix = prefixArr[0];
-                    if (prefix != null) {
-                        prefix = StringUtils.trimWhitespace(prefix);
-                        prefix = StringUtils.trimTrailingCharacter(prefix, SLASH);
-
-                        List<Server> servers = openApi.getServers();
-                        for (Server server : servers) {
-                            UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(server.getUrl());
-                            uriComponentsBuilder.path(prefix);
-                            UriComponents uriComponents = uriComponentsBuilder.build();
-                            server.setUrl(uriComponents.toUriString());
-                        }
+                    String prefix = fixup(prefixArr[0]);
+                    List<Server> servers = openApi.getServers();
+                    for (Server server : servers) {
+                        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(server.getUrl());
+                        uriComponentsBuilder.path(prefix);
+                        UriComponents uriComponents = uriComponentsBuilder.build();
+                        server.setUrl(uriComponents.toUriString());
                     }
                 }
             }
@@ -51,5 +43,14 @@ public class WebMvcXForwardedPrefixOpenApiTransformationFilter implements WebMvc
     @Override
     public boolean supports(DocumentationType delimiter) {
         return delimiter == DocumentationType.OAS_30;
+    }
+
+    private String fixup(String path) {
+        if (StringUtils.isEmpty(path)
+                || "/".equals(path)
+                || "//".equals(path)) {
+            return "/";
+        }
+        return StringUtils.trimTrailingCharacter(path.replace("//", "/"), '/');
     }
 }
