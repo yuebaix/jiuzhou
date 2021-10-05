@@ -17,4 +17,6 @@ dependencies {
     implementation 'io.swagger:swagger-models'
     implementation 'io.springfox:springfox-boot-starter'
     implementation 'com.github.xiaoymin:knife4j-spring-ui'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
