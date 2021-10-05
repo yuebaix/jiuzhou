@@ -6,4 +6,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+    implementation 'javax.servlet:javax.servlet-api'
+    implementation 'io.springfox:springfox-boot-starter'
 }
