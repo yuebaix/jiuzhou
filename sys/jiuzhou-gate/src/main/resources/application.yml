@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route-app-bizagg
+          uri: lb://app-bizagg
+          predicates:
+            - Path=/app-bizagg/**
+          filters:
+            - StripPrefix=1
+        - id: route-app-biz
+          uri: lb://app-biz
+          predicates:
+            - Path=/app-biz/**
+          filters:
+            - StripPrefix=1
