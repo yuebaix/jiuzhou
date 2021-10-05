@@ -6,8 +6,6 @@ spring:
           uri: lb://app-bizagg
           predicates:
             - Path=/app-bizagg/**
-          filters:
-            - StripPrefix=1
         - id: route-app-biz
           uri: lb://app-biz
           predicates:
