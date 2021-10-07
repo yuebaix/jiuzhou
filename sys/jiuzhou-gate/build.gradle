@@ -19,4 +19,5 @@ dependencies {
     implementation 'com.github.xiaoymin:knife4j-spring-ui'
 
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }

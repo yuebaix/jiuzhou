@@ -15,3 +15,25 @@ spring:
           filters:
             - StripPrefix=1
             - AddRequestHeader=Authorization, Basic eXVlYmFpeDp5dWViYWl4
+
+  security:
+    oauth2:
+      client:
+        registration:
+          jiuzhou:
+            provider: svc-uaa
+            client-id: jiuzhou
+            client-secret: jiuzhou
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:12001/login/oauth2/code/jiuzhou
+            scope: all
+        provider:
+          svc-uaa:
+            authorization-uri: http://localhost:12101/oauth/authorize
+            token-uri: http://localhost:12101/oauth/token
+            user-info-uri: http://localhost:12101/user/userInfo
+            user-name-attribute: username
+#            jwk-set-uri: http://localhost:12101/token_keys
+
+
+
