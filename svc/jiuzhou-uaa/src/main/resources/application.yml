@@ -3,7 +3,7 @@ security:
     client:
       client-id: jiuzhou
       client-secret: jiuzhou
-      registered-redirect-uri: https://baidu.com
-#      scope: all
+      registered-redirect-uri: http://localhost:12001/login/oauth2/code/jiuzhou
+      scope: all
 
 

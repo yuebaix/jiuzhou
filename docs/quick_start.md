@@ -89,6 +89,12 @@ POST http://localhost:12101/oauth/token?grant_type=password&username=yuebaix&pas
 Authorization: Basic aml1emhvdTpqaXV6aG91
 ```
 
+```http request
+GET http://localhost:12101/user/userInfo
+Authorization: Bearer a08ec88a-a4b2-4527-8f7a-37a36b8c939c
+
+```
+
 ## gate
 
 [http://localhost:12001/swagger-ui/](http://localhost:12001/swagger-ui/)
