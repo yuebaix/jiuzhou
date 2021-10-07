@@ -4,6 +4,6 @@ security:
       client-id: jiuzhou
       client-secret: jiuzhou
       registered-redirect-uri: https://baidu.com
-      scope: all
+#      scope: all
 
 

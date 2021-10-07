@@ -58,7 +58,9 @@ admin/123456
 
 [http://localhost:12101/swagger-ui/](http://localhost:12101/swagger-ui/)
 
-* authorization_code
+[阮一峰：OAuth 2.0 的四种方式](http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)
+
+* authorization_code 授权码模式（用户向应用授权，用户凭证 -> 授权码 -> 应用获取授权码 -> 授权码转换令牌 -> 应用获取令牌）
 
 ```http request
 GET http://localhost:12101/oauth/authorize?client_id=jiuzhou&response_type=code&redirect_uri=https://baidu.com&scope=all
@@ -67,7 +69,20 @@ POST http://localhost:12101/oauth/token?grant_type=authorization_code&code=U3j5F
 Authorization: Basic aml1emhvdTpqaXV6aG91
 ```
 
-* password
+* implicit 隐式转换模式（用户向应用授权，用户凭证 -> 令牌 -> 应用获取令牌）前端直接拉取令牌，易受攻击，受令牌加密影响。
+
+```http request
+GET http://localhost:12101/oauth/authorize?client_id=jiuzhou&response_type=token&redirect_uri=https://baidu.com&scope=all
+```
+
+* client_credentials 应用凭证模式（应用直接获取令牌）应用直接拉取自己的权限，适用于不需要用户授权的场景。
+
+```http request
+POST http://localhost:12101/oauth/token?grant_type=client_credentials&scope=all
+Authorization: Basic aml1emhvdTpqaXV6aG91
+```
+
+* password 密码模式（用户向应用授权，用户凭证 -> 应用获取令牌）这种方式用户账号密码直接给了三方应用。
 
 ```http request
 POST http://localhost:12101/oauth/token?grant_type=password&username=yuebaix&password=yuebaix&scope=all
