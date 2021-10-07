@@ -58,21 +58,21 @@ admin/123456
 
 [http://localhost:12101/swagger-ui/](http://localhost:12101/swagger-ui/)
 
-GET http://localhost:12101/oauth/authorize?client_id=jiuzhou&response_type=code&redirect_uri=https://baidu.com&state=test-state&scope=all
-Accept: application/json
+* authorization_code
 
-POST http://localhost:12101/oauth/token
-Content-Type: application/json
+```http request
+GET http://localhost:12101/oauth/authorize?client_id=jiuzhou&response_type=code&redirect_uri=https://baidu.com&scope=all
 
-{
-"client_id":"jiuzhou",
-"client_secret":"jiuzhou",
-"grant_type":"password",
-"username":"yuebaix",
-"password":"yuebaix",
-"scope":"all"
-}
+POST http://localhost:12101/oauth/token?grant_type=authorization_code&code=U3j5FJ&redirect_uri=https://baidu.com&scope=all
+Authorization: Basic aml1emhvdTpqaXV6aG91
+```
 
+* password
+
+```http request
+POST http://localhost:12101/oauth/token?grant_type=password&username=yuebaix&password=yuebaix&scope=all
+Authorization: Basic aml1emhvdTpqaXV6aG91
+```
 
 ## gate
 
