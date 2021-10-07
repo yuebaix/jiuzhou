@@ -1,0 +1,8 @@
+security:
+  oauth2:
+    client:
+      client-id: jiuzhou
+      client-secret: jiuzhou
+      registered-redirect-uri: https://baidu.com
+
+
